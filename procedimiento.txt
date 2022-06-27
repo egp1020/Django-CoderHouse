@@ -1,0 +1,19 @@
+1) Instalar virtualenv # pip viertualenv
+2) Crear entorno virtual # virtualenv nombre_carpeta
+3) Inicializar virtualenv # source env/Scripts/Activate
+4) Descargar Django # pip install django
+5) Comprobar que Django esté instalado: import django/django.VERSION
+6) Generar el archivo de apps. # pip freeze > requirements.txt
+7) Crear proyecto Django. # django-admin startproject Proyecto1
+8) Ingresar al proyecto # cd Proyecto1
+
+# Proyecto
+1) Manage: es importate porque permite interactuar con los proyectos, con comandos simples: ayudas, migraciones, testeos, etc.
+2) __init__.py reconoce que la carpeta es un paquete.
+3) __settings.py manipular la configuración del proyecto.
+4) url/wsgi ...
+
+# comandos
+1) python manage.py migrate
+2) python manage.py runserver # Ejecutar el servidor del proyecto
+3) py manage.py startapp AppCoder

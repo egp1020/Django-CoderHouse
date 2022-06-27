@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre aleatorio</title>
+</head>
+<body>
+    <form action="" method="get">
+
+        <label for="nombres">Nombres</label>
+        <input type="text" name="nombres">
+        <button type="submit">Elegir</button>
+
+    </form>
+  
+    <ul>
+        Se ingresaron los nombres:
+        {% for nombre in nombres %}
+            <li>{{nombre}}</li>
+        {%endfor%}
+    </ul>
+
+    <h2>El elegido es: {{elegido}} </h2>
+</body>
+</html>

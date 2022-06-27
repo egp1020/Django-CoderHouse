@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+</head>
+<body>
+    <h1>Calculadora de IMC</h1>
+
+    <form action="" method="get">
+        <label for="altura">Altura</label>
+        <input type="number" step="0.01" name="altura">
+
+        <label for="peso">Peso</label>
+        <input type="number" step="0.01" name="peso">
+
+        <button type="submit">Calcular</button>
+    </form>
+
+
+    <h2>Resultado es:{{imc|floatformat}}</h2>
+</body>
+</html>
