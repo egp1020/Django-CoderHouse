@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.views.generic.list import ListView
+""" from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
-from django.views.generic import DetailView
+from django.views.generic import DetailView """
 
 
 
@@ -10,7 +10,7 @@ from .models import Mascota
 from datetime import datetime
 
 
-class ListarMascotas(ListView):
+""" class ListarMascotas(ListView):
     model = Mascota
     template_name = 'mascota/listar_mascotas.html'
 
@@ -38,11 +38,11 @@ class EliminarMascota(DeleteView):
 class MostrarMascota(DetailView):
     model = Mascota
     template_name = 'mascota/mostrar_mascota.html'
-    
+"""
 def una_vista(request):
     return render(request, 'home/index.html')
 
-""" def crear_mascota(request):
+def crear_mascota(request):
     if request.method == 'POST':
         form = FormMascota(request.POST)
         
@@ -105,4 +105,4 @@ def eliminar_mascota(request, id):
 
 def mostrar_mascota(request, id):
     mascota = Mascota.objects.get(id=id)
-    return render(request, 'mascota/mostrar_mascota.html', {'mascota': mascota}) """
+    return render(request, 'mascota/mostrar_mascota.html', {'mascota': mascota})
