@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Listar mascota
+{% endblock title %}
+
+{% block texto_header %}
+<h1>Listar mascota</h1>
+{% endblock texto_header %}
+
+{% block contenido %}
+<p>
+    <a href={% url 'crear_mascota' %}>Crear mascota</a>
+</p>
+
+<p>
+    {% if object_list %}
+        <ul>
+            {% for mascota in object_list %}
+                <li>
+                    {{mascota}}
+                    <a href={% url 'mostrar_mascota' mascota.id %}>Mostrar</a>
+                    <a href={% url 'editar_mascota' mascota.id %}>Editar</a>
+                    <a href={% url 'eliminar_mascota' mascota.id %}>Eliminar</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay mascotas</p>
+    {% endif %}
+</p>
+{% endblock contenido %}

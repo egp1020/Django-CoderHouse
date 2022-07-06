@@ -1,4 +1,4 @@
-"""ProyectoCoder URL Configuration
+"""MVTCristianBiancotti URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,15 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from AppCoder.views import saludo, saludo_particular, fecha_nacimiento, template_saludo_general, calcular_imc, elegir_nombre_aleatorio
 
 urlpatterns = [
+    path('', include('desafio.urls')),
+    path('mascotas/', include('mascota.urls')),
     path('admin/', admin.site.urls),
-    path('', include('mascota.urls')),
-    path("app-coder/saludo", saludo),
-    path("app-coder/saludo/<nombre>", saludo_particular),
-    path("app-coder/fecha-nacimiento/<edad>", fecha_nacimiento),
-    path("app-coder/saludo-template", template_saludo_general),
-    path("app-coder/imc", calcular_imc),
-    path("app-coder/nombre-aleatorio", elegir_nombre_aleatorio)
 ]

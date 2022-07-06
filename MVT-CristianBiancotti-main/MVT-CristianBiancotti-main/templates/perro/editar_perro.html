@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Editar Perro</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>
+    Editar de Perro
+</h1>
+{% endblock texto_header %}
+
+{% block despues_del_header %}
+<p>
+    <a href={% url 'listado_perros' %}>Volver</a>
+</p>
+<p>
+    <form action={% url 'editar_perro' perro.id %} method="post">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <button>Editar</button>
+    </form>
+</p>
+{% endblock despues_del_header %}

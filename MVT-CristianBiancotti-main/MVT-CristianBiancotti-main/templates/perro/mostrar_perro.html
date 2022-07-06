@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Perro</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>
+    Perro
+</h1>
+{% endblock texto_header %}
+
+{% block despues_del_header %}
+<p>
+    <a href={% url 'listado_perros' %}>Volver</a>
+</p>
+
+<p>
+    <ul>
+        <li>
+            {{perro.nombre}}
+        </li>
+        <li>
+            {{perro.edad}}
+        </li>
+        <li>
+            {{perro.fecha_creacion}}
+        </li>
+    </ul>
+</p>
+{% endblock despues_del_header %}

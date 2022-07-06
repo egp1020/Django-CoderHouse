@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Eliminar Gato</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>
+    Eliminar Gato
+</h1>
+{% endblock texto_header %}
+
+{% block despues_del_header %}
+<p>
+    <a href={% url 'listado_gatos' %}>Volver</a>
+</p>
+
+<p>
+    <form action={% url 'eliminar_gato' object.id %} method="post">
+        {% csrf_token %}
+        ¿Desea eliminar el gato?
+        <button>Confirmar</button>
+    </form>
+</p>
+
+{% endblock despues_del_header %}

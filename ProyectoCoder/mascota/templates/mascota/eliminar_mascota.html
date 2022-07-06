@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Eliminar mascota
+{% endblock title %}
+
+{% block texto_header %}
+<h1>Eliminar mascota</h1>
+{% endblock texto_header %}
+
+{% block contenido %}
+<p>
+    <a href={% url 'listar_mascotas' %}>Volver</a>
+</p>
+
+<p>
+    <form action={% url 'eliminar_mascota' mascota.id %} method="post">
+        {% csrf_token %}
+        ¿Está seguro de que desea eliminar la mascota {{ mascota.nombre }}?
+        <button type="submit">Confirmar</button>
+    </form>
+</p>
+{% endblock contenido %}

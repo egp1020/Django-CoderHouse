@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Mascota
+{% endblock title %}
+
+{% block texto_header %}
+Mascota
+{% endblock texto_header %}
+
+{% block contenido %}
+<p>
+    <a href={% url 'listar_mascotas' %}>Volver</a>
+</p>
+
+<p>
+    <ul>
+        <li>
+            {{mascota.nombre}}
+        </li>
+        <li>
+            {{mascota.edad}}
+        </li>
+        <li>
+            {{mascota.fecha_ingreso}}
+        </li>
+    </ul>
+</p>
+{% endblock contenido %}

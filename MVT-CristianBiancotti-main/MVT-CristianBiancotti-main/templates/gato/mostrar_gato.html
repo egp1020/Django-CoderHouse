@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Gato</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>
+    Gato
+</h1>
+{% endblock texto_header %}
+
+{% block despues_del_header %}
+<p>
+    <a href={% url 'listado_gatos' %}>Volver</a>
+</p>
+
+<p>
+    <ul>
+        <li>
+            {{gato.apodo}}
+        </li>
+        <li>
+            {{gato.edad}}
+        </li>
+        <li>
+            {{gato.fecha_creacion}}
+        </li>
+    </ul>
+</p>
+{% endblock despues_del_header %}
