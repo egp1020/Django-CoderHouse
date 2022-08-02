@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Detalle del libro
+{% endblock title %}
+
+{% block title_page %}
+Detallando libro
+{% endblock title_page %}
+
+{% block contenido %}
+<p>
+    <a href={% url 'listar_libros' %}>Volver</a>
+</p>
+
+<ul class="list-group">
+    <li class="list-group-item">{{libro.nombre}}</li>
+    <li class="list-group-item">{{libro.autor}}</li>
+    <li class="list-group-item">{{libro.fecha_publicacion}}</li>
+  </ul>
+{% endblock contenido %}

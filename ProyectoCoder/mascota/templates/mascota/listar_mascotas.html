@@ -14,6 +14,13 @@ Listar mascota
 </p>
 
 <p>
+    <form action={% url 'listar_mascotas' %}>
+        {{form}}
+        <button>Buscar</button>
+    </form>
+</p>
+
+<p>
     {% if object_list %}
         <ul>
             {% for mascota in object_list %}

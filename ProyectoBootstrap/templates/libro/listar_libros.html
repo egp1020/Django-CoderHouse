@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Listado de libros
+{% endblock %}
+
+{% block title_page %}
+Listando libros
+{% endblock title_page %}
+
+{% block contenido %}
+    <p>
+        <a href={% url 'crear_libro' %}>Registrar libro</a>
+    </p>
+    <p>
+        {% if object_list %}
+            <ul class="list-group list-group-flush">
+                {% for libro in object_list %}
+                    {{libro.nombre}}
+                    <li class="list-group-item">
+                        <a href={% url 'mostrar_libro' libro.id %}>Mostrar</a>
+                        <a href={% url 'editar_libro' libro.id %}>Editar</a>
+                        <a href={% url 'eliminar_libro' libro.id %}>Eliminar</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay libros registrados</p>
+        {% endif %}
+    </p>
+{% endblock contenido %}

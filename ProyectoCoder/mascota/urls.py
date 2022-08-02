@@ -1,8 +1,11 @@
 from django.urls import path
-from .views import ListarMascotas, CrearMascota, EditarMascota, EliminarMascota, MostrarMascota, una_vista
+
+from accounts.views import home
+from .views import ListarMascotas, CrearMascota, EditarMascota, EliminarMascota, MostrarMascota
+
 
 urlpatterns = [
-    path('', una_vista, name='index'),
+    path('', home, name='index'),
     path('mascotas/', ListarMascotas.as_view(), name='listar_mascotas'),
     path('crear-mascota/', CrearMascota.as_view(), name='crear_mascota'),
     path('editar-mascota/<int:pk>/', EditarMascota.as_view(), name='editar_mascota'),

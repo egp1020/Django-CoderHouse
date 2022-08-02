@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .models import Mascota
+from .forms import BusquedaMascota
 
-""" from .forms import BusquedaMascota, FormMascota
+""" 
+from django.contrib.auth.decorators import login_required
+from .forms import BusquedaMascota, FormMascota
 from .models import Mascota
 from datetime import datetime """
 
@@ -13,6 +18,19 @@ from datetime import datetime """
 class ListarMascotas(ListView):
     model = Mascota
     template_name = 'mascota/listar_mascotas.html'
+
+    def get_queryset(self):
+        nombre = self.request.GET.get('nombre', '')
+        if nombre:
+            object_list = self.model.objects.filter(nombre__icontains=nombre)
+        else:
+            object_list = self.model.objects.all()
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = BusquedaMascota()
+        return context
 
 
 class CrearMascota(CreateView):
@@ -22,14 +40,14 @@ class CrearMascota(CreateView):
     fields = ['nombre', 'edad', 'fecha_ingreso']
 
 
-class EditarMascota(UpdateView):
+class EditarMascota(LoginRequiredMixin, UpdateView):
     model = Mascota
     template_name = 'mascota/editar_mascota.html'
     success_url = '/mascotas'
     fields = ['nombre', 'edad', 'fecha_ingreso']
 
 
-class EliminarMascota(DeleteView):
+class EliminarMascota(LoginRequiredMixin, DeleteView):
     model = Mascota
     template_name = 'mascota/eliminar_mascota.html'
     success_url = '/mascotas'
@@ -76,7 +94,8 @@ def listar_mascotas(request):
     
     form = BusquedaMascota()
     return render(request, 'mascota/listar_mascotas.html', {'listar_mascotas': listar_mascotas, 'form': form})
-    
+
+@login_required
 def editar_mascota(request, id):
     mascota = Mascota.objects.get(id=id)
     
@@ -97,7 +116,7 @@ def editar_mascota(request, id):
     
     return render(request, 'mascota/editar_mascota.html', {'form': form_mascota, 'mascota': mascota})
         
-
+@login_required
 def eliminar_mascota(request, id):
     mascota = Mascota.objects.get(id=id)
     mascota.delete()

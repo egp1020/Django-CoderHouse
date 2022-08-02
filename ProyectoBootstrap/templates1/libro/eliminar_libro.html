@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+Eliminación de libro
+{% endblock %}
+
+{% block title_page %}
+Eliminando libro
+{% endblock title_page %}
+
+{% block contenido %}
+    <p>
+        <a href={% url 'listar_libros' %}>Volver</a>
+    </p>
+    
+    <div>
+        <form action={% url 'eliminar_libro' object.id %} method="post">
+            {% csrf_token %}
+            ¿Desea eliminar el libro?
+            <button class="btn btn-dark">Confirmar</button>
+        </form>
+    </div>
+{% endblock contenido %}

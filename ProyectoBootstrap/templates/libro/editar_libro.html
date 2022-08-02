@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Edición de libro
+{% endblock %}
+
+{% block title_page %}
+Editando libro
+{% endblock title_page %}
+
+{% block contenido %}
+    <p>
+        <a href={% url 'listar_libros' %}>Volver</a>
+    </p>
+    
+    <div>
+        <form action={% url 'editar_libro' libro.id %} method="post">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <button class="btn btn-danger">Editar</button>
+        </form>
+    </div>
+{% endblock contenido %}
